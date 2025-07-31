@@ -1,6 +1,7 @@
-import { SignUpUseCase } from './../application/useCases/SignUpUseCase';
-export function makeSignUpUseCase() {
-  const SALT = 10
+import { SignUpUseCase } from '../application/useCases/SignUpUseCase';
 
-  return new SignUpUseCase(SALT)
+export function makeSignUpUseCase() {
+  const SALT = 10;
+
+  return new SignUpUseCase(SALT);
 }
