@@ -1,7 +1,8 @@
 import { ZodError, z } from 'zod';
 
 import { InvalidCredentials } from '../errors/InvalidCredentials';
-import { IController, IRequest, IResponse } from '../interfaces/IController';
+import { IController, IResponse } from '../interfaces/IController';
+import { IRequest } from '../interfaces/IRequest';
 import { SignInUseCase } from '../useCases/SignInUseCase';
 
 const schema = z.object({
@@ -16,7 +17,10 @@ export class SignInController implements IController {
     try {
       const { email, password } = schema.parse(body);
 
-      const { accessToken } = await this.signInUseCase.execute({ email, password });
+      const { accessToken } = await this.signInUseCase.execute({
+        email,
+        password,
+      });
 
       return {
         statusCode: 200,

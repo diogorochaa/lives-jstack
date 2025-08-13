@@ -3,6 +3,7 @@ import express from 'express';
 import { routeAdapter } from './adapters/routeAdapter';
 
 import { makeAuthenticationMiddleware } from '../factories/makeAuthenticationMiddleware';
+import { makeAuthorizationMiddleware } from '../factories/makeAuthorizationMiddleware';
 import { makeListLeadsController } from '../factories/makeListLeadsController';
 import { makeSignInController } from '../factories/makeSignInController';
 import { makeSignUpController } from '../factories/makeSignUpController';
@@ -24,8 +25,8 @@ app.get(
 app.post(
   '/leads',
   middlewareAdapter(makeAuthenticationMiddleware()),
+  middlewareAdapter(makeAuthorizationMiddleware(['ADMIN'])),
   async (req, res) => {
-    console.log(req.metadata?.account);
     res.json({ created: true });
   },
 );
