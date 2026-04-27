@@ -3,36 +3,39 @@ import { Input } from "@/components/Input";
 import { sleep } from "@/lib/utils";
 import { Loader2Icon, TriangleAlertIcon } from "lucide-react";
 import { startTransition, useActionState, useState } from "react";
-import { useFormStatus } from 'react-dom';
+import { useFormStatus } from "react-dom";
 
 async function updateUserName(name) {
   await sleep(500);
 
-  if (name === 'a') {
-    throw new Error('Nome inválido.');
+  if (name === "a") {
+    throw new Error("Nome inválido.");
   }
 }
 
 export function Demo3() {
   const [error, setError] = useState(null);
 
-  const [data, submitAction, isLoading] = useActionState(async (previousState, formData) => {
-    const name = formData.get('name');
+  const [data, submitAction, isLoading] = useActionState(
+    async (_previousState, formData) => {
+      const name = formData.get("name");
 
-    try {
-      await updateUserName(name);
+      try {
+        await updateUserName(name);
 
-      startTransition(() => {
-        setError(null);
-      });
-    } catch (error) {
-      startTransition(() => {
-        setError(error);
-      });
-    }
+        startTransition(() => {
+          setError(null);
+        });
+      } catch (error) {
+        startTransition(() => {
+          setError(error);
+        });
+      }
 
-    return { name };
-  }, null);
+      return { name };
+    },
+    null,
+  );
 
   return (
     <div className="w-full max-w-lg">
@@ -43,11 +46,7 @@ export function Demo3() {
       )}
 
       <form className="mt-6" action={submitAction}>
-        <Input
-          defaultValue={data?.name}
-          placeholder="Nome"
-          name="name"
-        />
+        <Input defaultValue={data?.name} placeholder="Nome" name="name" />
 
         <div className="mt-4 flex items-center gap-4">
           <Button>Salvar</Button>
