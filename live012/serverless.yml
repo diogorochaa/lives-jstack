@@ -1,0 +1,36 @@
+service: live012
+frameworkVersion: '3'
+
+plugins:
+  - serverless-esbuild
+  - serverless-offline
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  memorySize: 128
+
+custom:
+  esbuild:
+    target: node18
+    format: esm
+    minify: true
+    outputFileExtension: .mjs
+
+functions:
+  hello:
+    handler: src/functions/hello.handler
+    events:
+      - httpApi:
+          path: /
+          method: GET
+  getUserById:
+    handler: src/functions/getUserById.handler
+    memorySize: 512
+    events:
+      - httpApi:
+          path: /users/{userId}
+          method: GET

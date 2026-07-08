@@ -1,0 +1,16 @@
+{
+  "name": "live012",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "sls offline --reloadHandler"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.130",
+    "esbuild": "^0.19.11",
+    "serverless-esbuild": "^1.50.1",
+    "serverless-offline": "^13.3.2",
+    "typescript": "^5.3.3"
+  }
+}
