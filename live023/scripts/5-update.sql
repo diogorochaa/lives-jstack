@@ -1,5 +1,10 @@
 \c live023
 
 UPDATE customers
-SET email = 'updated_' || email
-WHERE id IN (1, 2, 3);
+SET
+  first_name = 'Mateus - Edited',
+  last_name = 'Silva - Edited',
+  email = 'mateus.edited@jstack.com.br'
+WHERE id = 1
+RETURNING *
+;

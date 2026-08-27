@@ -1,41 +1,19 @@
-\c live023 
+\c live023
 
---SELECT id, first_name, last_name, email FROM customers;
+-- * = ALL
+-- SELECT id, first_name AS "firstName", last_name AS "lastName"
+-- FROM customers;
 
---SELECT id AS customer_id, first_name AS name FROM customers;
+-- INSERT INTO customers(first_name, created_at)
+-- VALUES ('Ana 2', '2023-05-22 19:11:24.73714');
 
---SELECT first_name AS "primeiro nome" FROM customers;
+-- SELECT * FROM customers
+-- ORDER BY id ASC
+-- OFFSET 20
+-- LIMIT 10;
 
-SELECT * FROM customers
-ORDER BY first_name DESC 
-LIMIT 5
-OFFSET 5;
+-- SELECT * FROM customers
+-- WHERE first_name ILIKE 'aN%'
+-- ;
 
-SELECT * FROM customers
-WHERE id = 10;
-
--- IN(10, 15, 20)
-SELECT * FROM customers
-WHERE id IN (10, 15, 20);
-
--- BETWEEN 10 AND 20
-SELECT * FROM customers
-WHERE id BETWEEN 10 AND 20;
-
--- NOT BETWEEN 10 AND 20
-SELECT * FROM customers
-WHERE id NOT BETWEEN 10 AND 20;
-
--- IS NULL
-SELECT * FROM customers
-WHERE email IS NULL;
-
--- LIKE 
-SELECT * FROM customers
-WHERE email LIKE '%@example.com';
-
--- ILIKE (case-insensitive)
-SELECT * FROM customers
-WHERE email ILIKE '%@EXAMPLE.COM'; 
-
---SELECT * FROM orders;
+SELECT * FROM customers ORDER BY id;
