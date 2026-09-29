@@ -1,0 +1,5 @@
+\c live025
+
+EXPLAIN ANALYZE VERBOSE SELECT * FROM customers WHERE id = 9;
+
+EXPLAIN ANALYZE VERBOSE SELECT * FROM customers WHERE first_name = 9;
